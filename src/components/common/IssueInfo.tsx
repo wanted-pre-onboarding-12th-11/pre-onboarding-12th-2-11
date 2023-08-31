@@ -26,23 +26,70 @@ const IssueInfo = ({issue}: IssueItemProps) => {
 
     return (
         <ItemStyled
+            className={issueNumber ? '' : 'hover'}
             onClick={() => {
                 !issueNumber && navigateToDetailPage();
             }}
         >
             <div className='left'>
-                <div className='title'>
-                    <span>#{number}</span> {title}
+                <div className='top'>
+                    <span className='issueNumber'>#{number}</span>{' '}
+                    <span className='title'>{title}</span>
                 </div>
-                <div className='info'>
+                <div className='bottom'>
                     작성자: {login}, 작성일: {createdAt}
                 </div>
             </div>
-            <div className='right'>코멘트: {comments}</div>
+            <div className='right'>
+                코멘트: <span>{comments}</span>
+            </div>
         </ItemStyled>
     );
 };
 
 export default IssueInfo;
 
-const ItemStyled = styled.div``;
+export const ItemStyled = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-bottom: 1px solid gray;
+    cursor: pointer;
+
+    &.hover:hover {
+        background-color: var(--listItemHoverBg);
+    }
+
+    .left {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .top {
+            display: inline;
+
+            .issueNumber {
+                margin-right: 6px;
+            }
+            .title {
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }
+        .bottom {
+            display: flex;
+            gap: 6px;
+            color: var(--textSubtitle);
+        }
+    }
+    .right {
+        flex-shrink: 0;
+        font-size: 14px;
+        color: var(--textSubtitle);
+        span {
+            font-weight: 500;
+        }
+    }
+`;
