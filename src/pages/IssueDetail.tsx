@@ -1,5 +1,7 @@
+import IssueDetailContainer from 'containers/IssueDetailContainer';
+
 const IssueDetail = () => {
-    return <></>;
+    return <IssueDetailContainer />;
 };
 
 export default IssueDetail;

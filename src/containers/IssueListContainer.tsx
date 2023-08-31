@@ -6,7 +6,7 @@ import {issuesStateAtom} from 'stores/atom';
 import {useEffect} from 'react';
 import NotFound from 'pages/NotFound';
 import {useInfiniteScroll} from 'hooks/useInfiniteScroll';
-import Item from 'components/common/Item';
+import Item from 'components/common/IssueInfo';
 import React from 'react';
 import LoadingSkeleton from 'components/IssueList/IssueListSkeleton';
 import LoadingSpinner from 'components/common/LoadingSpinner';
