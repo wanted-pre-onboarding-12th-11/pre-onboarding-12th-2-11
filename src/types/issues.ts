@@ -8,10 +8,24 @@ export interface issueItemType {
     comments: number;
 }
 
+export interface issueItemDetailType extends issueItemType {
+    user: {
+        login: string;
+        avatar_url: string;
+    };
+    body: string;
+}
+
 export interface issuesStateType {
     isLoading: boolean;
     errorStatus: number | string;
     pageCount: number;
     moreData: boolean;
     issues: issueItemType[] | [];
+}
+
+export interface issueDetailStateType {
+    isLoading: boolean;
+    errorStatus: number | string;
+    issue: issueItemDetailType;
 }
