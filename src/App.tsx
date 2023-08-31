@@ -1,21 +1,13 @@
-import './App.css';
+import {Outlet} from 'react-router-dom';
+import Header from 'components/common/Header';
 
 const App = () => {
-  return (
-    <div className='App'>
-      <header className='App-header'>
-        <p>"ㅎㅇ"</p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    return (
+        <>
+            <Header />
+            <Outlet />
+        </>
+    );
+};
 
 export default App;
