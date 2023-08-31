@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Ad = () => {
     return (
         <AdStyled>
-            <span className='ad-tag'>ad.</span>
+            <span className='ad-tag'>AD</span>
             <Link to='https://www.wanted.co.kr/' target='_blank'>
                 <img
                     src='https://cdn.discordapp.com/attachments/1143474691118485558/1146132601518686371/ad_image.png'
@@ -25,10 +25,11 @@ const AdStyled = styled.div`
     cursor: pointer;
 
     .ad-tag {
+        font-size: 12px;
         padding: 4px;
         position: absolute;
         margin-top: 5px;
-        right: 10px;
+        right: 5px;
         color: var(--textSubtitle);
         border-radius: 4px;
         background-color: var(--listItemBg);
