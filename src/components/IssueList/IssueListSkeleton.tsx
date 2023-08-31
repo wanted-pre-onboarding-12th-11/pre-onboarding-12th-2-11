@@ -1,13 +1,12 @@
+import {ItemStyled} from 'components/common/IssueInfo';
 import styled from 'styled-components';
 
 const IssueListSkeleton = () => {
     return (
         <SkeletonStyled>
             <div className='left'>
-                <div className='title'>
-                    <span></span>
-                </div>
-                <div className='info'></div>
+                <div className='top'></div>
+                <div className='bottom'></div>
             </div>
             <div className='right'></div>
         </SkeletonStyled>
@@ -16,8 +15,37 @@ const IssueListSkeleton = () => {
 
 export default IssueListSkeleton;
 
-const SkeletonStyled = styled.div`
-    background-color: red;
-    height: 100vh;
-    width: 50vw;
+const SkeletonStyled = styled(ItemStyled)`
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    div {
+        border-radius: 6px;
+    }
+
+    .left {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+
+        .top {
+            height: 21px;
+            background-color: var(--listItemBg);
+        }
+
+        .bottom {
+            height: 21px;
+            background-color: var(--textCode);
+        }
+    }
+
+    .right {
+        flex-shrink: 0;
+        width: 70px;
+        height: 16px;
+        background-color: var(--textCode);
+    }
 `;
