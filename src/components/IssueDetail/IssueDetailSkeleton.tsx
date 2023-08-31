@@ -21,6 +21,21 @@ const DetailSkeletonStyled = styled.div`
     border-radius: 12px;
     width: 100%;
 
+    @keyframes shine {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+    animation: shine 1s ease-in-out infinite;
+
     div:empty {
         background-color: var(--textCode);
     }
