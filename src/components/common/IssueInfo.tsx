@@ -76,6 +76,7 @@ export const ItemStyled = styled.div`
 
             .issueNumber {
                 margin-right: 6px;
+                font-variant-numeric: tabular-nums;
             }
             .title {
                 font-size: 18px;
