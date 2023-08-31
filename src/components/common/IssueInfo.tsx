@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {useNavigate, useParams} from 'react-router-dom';
 import {issueItemType} from 'types/issues';
 import ROUTES from 'constants/routes';
+import {changeDateFormat} from 'utils';
 
 interface IssueItemProps {
     issue: issueItemType;
@@ -37,7 +38,7 @@ const IssueInfo = ({issue}: IssueItemProps) => {
                     <span className='title'>{title}</span>
                 </div>
                 <div className='bottom'>
-                    작성자: {login}, 작성일: {createdAt}
+                    작성자: {login}, 작성일: {changeDateFormat(createdAt)}
                 </div>
             </div>
             <div className='right'>
