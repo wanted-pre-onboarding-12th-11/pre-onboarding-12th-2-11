@@ -1,14 +1,14 @@
 import {IssuesController} from 'controllers/IssuesController';
 
-import Ad from 'components/Ad';
+import Ad from 'components/IssueList/Ad';
 import {useRecoilValue} from 'recoil';
 import {issuesStateAtom} from 'stores/atom';
 import {useEffect} from 'react';
 import NotFound from 'pages/NotFound';
 import {useInfiniteScroll} from 'hooks/useInfiniteScroll';
-import Item from 'components/Item';
+import Item from 'components/common/Item';
 import React from 'react';
-import LoadingSkeleton from 'components/common/LoadingSkeleton';
+import LoadingSkeleton from 'components/IssueList/IssueListSkeleton';
 import LoadingSpinner from 'components/common/LoadingSpinner';
 
 const IssueListContainer = () => {
