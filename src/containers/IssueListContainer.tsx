@@ -1,15 +1,13 @@
 import {IssuesController} from 'controllers/IssuesController';
-
-import Ad from 'components/IssueList/Ad';
+import React, {useEffect} from 'react';
 import {useRecoilValue} from 'recoil';
 import {issuesStateAtom} from 'stores/atom';
-import {useEffect} from 'react';
-import NotFound from 'pages/NotFound';
 import {useInfiniteScroll} from 'hooks/useInfiniteScroll';
-import Item from 'components/common/IssueInfo';
-import React from 'react';
+import Ad from 'components/IssueList/Ad';
+import NotFound from 'pages/NotFound';
 import LoadingSkeleton from 'components/IssueList/IssueListSkeleton';
 import LoadingSpinner from 'components/common/LoadingSpinner';
+import IssueInfo from 'components/common/IssueInfo';
 
 const IssueListContainer = () => {
     const issuesState = useRecoilValue(issuesStateAtom);
@@ -33,7 +31,7 @@ const IssueListContainer = () => {
                     const showAd = (index + 1) % 4 === 0;
                     return (
                         <React.Fragment key={data.number}>
-                            <Item issue={data} />
+                            <IssueInfo issue={data} />
                             {showAd && <Ad />}
                         </React.Fragment>
                     );
