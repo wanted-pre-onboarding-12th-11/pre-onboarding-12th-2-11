@@ -11,7 +11,7 @@ const NotFound = ({errorStatus}: {errorStatus?: number | string}) => {
 
     return (
         <StyledNotFoundContainer>
-            <p className='error-status'>{errorStatus && errorStatus}</p>
+            {errorStatus && <p className='error-status'>{errorStatus}</p>}
             <p className='message'>페이지를 찾을 수 없습니다 :(</p>
             <button onClick={navigateToMain}>메인으로 돌아가기</button>
         </StyledNotFoundContainer>
