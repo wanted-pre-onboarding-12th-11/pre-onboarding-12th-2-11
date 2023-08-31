@@ -7,3 +7,11 @@ export interface issueItemType {
     created_at: string;
     comments: number;
 }
+
+export interface issuesStateType {
+    isLoading: boolean;
+    errorStatus: number | string;
+    pageCount: number;
+    moreData: boolean;
+    issues: issueItemType[] | [];
+}
