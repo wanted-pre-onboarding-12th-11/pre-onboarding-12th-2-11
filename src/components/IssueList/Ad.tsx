@@ -17,4 +17,9 @@ const Ad = () => {
 
 export default Ad;
 
-const AdStyled = styled.div``;
+const AdStyled = styled.div`
+    width: 100%;
+    img {
+        width: 200px;
+    }
+`;
