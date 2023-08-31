@@ -8,7 +8,7 @@ interface IssueItemProps {
     issue: issueItemType;
 }
 
-const IssueItem = ({issue}: IssueItemProps) => {
+const Item = ({issue}: IssueItemProps) => {
     const {
         number,
         title,
@@ -39,6 +39,6 @@ const IssueItem = ({issue}: IssueItemProps) => {
     );
 };
 
-export default IssueItem;
+export default Item;
 
 const ItemStyled = styled.div``;
