@@ -24,7 +24,7 @@ const IssueListContainer = () => {
 
     const getNextPageRef = useInfiniteScroll(getNextPage);
 
-    if (errorStatus) return <NotFound />;
+    if (errorStatus) return <NotFound errorStatus={errorStatus} />;
 
     return (
         <>

@@ -18,7 +18,7 @@ const IssueDetailContainer = () => {
         getIssue(issueNumber);
     }, []);
 
-    if (errorStatus) return <NotFound />;
+    if (errorStatus) return <NotFound errorStatus={errorStatus} />;
 
     return (
         <>
