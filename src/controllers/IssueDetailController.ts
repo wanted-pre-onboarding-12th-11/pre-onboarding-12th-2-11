@@ -25,6 +25,13 @@ const IssueDetailController = () => {
         try {
             const res = await api.getIssue(id);
             setIssueDetail(prev => ({...prev, issue: res.data}));
+            if (res.data.state !== 'open') {
+                const error = new AxiosError();
+                setIssueDetail(prev => ({
+                    ...prev,
+                    errorStatus: error.response?.status ?? 'open 상태가 아닙니다',
+                }));
+            }
         } catch (e) {
             const error = e as AxiosError;
             setIssueDetail(prev => ({
