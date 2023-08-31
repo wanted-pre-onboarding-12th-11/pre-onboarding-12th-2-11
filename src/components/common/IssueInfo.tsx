@@ -55,8 +55,9 @@ export const ItemStyled = styled.div`
     justify-content: space-between;
     align-items: center;
     gap: 12px;
+    box-sizing: border-box;
     padding: 16px;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid var(--listBorder);
     cursor: pointer;
 
     &.hover:hover {

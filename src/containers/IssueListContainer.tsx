@@ -8,6 +8,7 @@ import NotFound from 'pages/NotFound';
 import LoadingSkeleton from 'components/IssueList/IssueListSkeleton';
 import LoadingSpinner from 'components/common/LoadingSpinner';
 import IssueInfo from 'components/common/IssueInfo';
+import styled from 'styled-components';
 
 const IssueListContainer = () => {
     const issuesState = useRecoilValue(issuesStateAtom);
@@ -25,7 +26,8 @@ const IssueListContainer = () => {
     if (errorStatus) return <NotFound errorStatus={errorStatus} />;
 
     return (
-        <>
+        <ListContainer>
+            <StyledPageTitle>Issues</StyledPageTitle>
             {issues.length > 0 ? (
                 issues.map((data, index) => {
                     const showAd = (index + 1) % 4 === 0;
@@ -41,8 +43,21 @@ const IssueListContainer = () => {
             )}
             {isLoading && !isRefetchNeeded && <LoadingSpinner />}
             {moreData && <div ref={getNextPageRef} />}
-        </>
+        </ListContainer>
     );
 };
 
 export default IssueListContainer;
+
+const ListContainer = styled.div`
+    border: 1px solid var(--listBorder);
+    border-radius: 12px;
+    margin: 10px;
+    overflow: hidden;
+`;
+
+const StyledPageTitle = styled.h3`
+    padding: 10px;
+    border-bottom: 1px solid var(--listBorder);
+    background-color: var(--listItemBg);
+`;
