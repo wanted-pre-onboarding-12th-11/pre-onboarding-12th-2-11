@@ -27,7 +27,7 @@
         "lint": "eslint --cache ."
     },
     "lint-staged": {
-      "*.{js,jsx,ts,tsx}": "npm run format"
+        "*.{js,jsx,ts,tsx}": "npm run format"
     },
     "eslintConfig": {
         "extends": [
