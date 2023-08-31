@@ -26,7 +26,7 @@ const IssueListContainer = () => {
     if (errorStatus) return <NotFound errorStatus={errorStatus} />;
 
     return (
-        <ListContainer>
+        <ListContainerStyled>
             <StyledPageTitle>Issues</StyledPageTitle>
             {issues.length > 0
                 ? issues.map((data, index) => {
@@ -41,13 +41,13 @@ const IssueListContainer = () => {
                 : Array.from({length: 10}).map((_, index) => <IssueListSkeleton key={index} />)}
             {isLoading && !isRefetchNeeded && <LoadingSpinner />}
             {moreData && <div ref={getNextPageRef} />}
-        </ListContainer>
+        </ListContainerStyled>
     );
 };
 
 export default IssueListContainer;
 
-const ListContainer = styled.div`
+const ListContainerStyled = styled.div`
     border: 1px solid var(--listBorder);
     border-radius: 12px;
     margin: 10px;

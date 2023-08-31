@@ -6,16 +6,16 @@ const App = () => {
     return (
         <>
             <Header />
-            <ContentsWrapper>
+            <ContentsWrapperStyled>
                 <Outlet />
-            </ContentsWrapper>
+            </ContentsWrapperStyled>
         </>
     );
 };
 
 export default App;
 
-const ContentsWrapper = styled.div`
+const ContentsWrapperStyled = styled.div`
     max-width: 768px;
     margin: 0 auto;
 `;

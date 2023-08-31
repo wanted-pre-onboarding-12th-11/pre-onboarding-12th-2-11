@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {useNavigate, useParams} from 'react-router-dom';
 import {issueItemType} from 'types/issues';
 import ROUTES from 'constants/routes';
-import {changeDateFormat} from 'utils';
+import {changeDateFormat} from 'utils/changeDateFormat';
 
 interface IssueItemProps {
     issue: issueItemType;

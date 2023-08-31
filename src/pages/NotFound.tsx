@@ -10,17 +10,17 @@ const NotFound = ({errorStatus}: {errorStatus?: number | string}) => {
     };
 
     return (
-        <StyledNotFoundContainer>
+        <NotFoundContainerStyled>
             {errorStatus && <p className='error-status'>{errorStatus}</p>}
             <p className='message'>페이지를 찾을 수 없습니다 :(</p>
             <button onClick={navigateToMain}>메인으로 돌아가기</button>
-        </StyledNotFoundContainer>
+        </NotFoundContainerStyled>
     );
 };
 
 export default NotFound;
 
-const StyledNotFoundContainer = styled.div`
+const NotFoundContainerStyled = styled.div`
     margin-top: 50px;
     text-align: center;
     .error-status {
