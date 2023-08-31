@@ -48,16 +48,16 @@ const ContainerStyled = styled.div`
     border-radius: 12px;
 `;
 
-const AvatarStyled = styled.img`
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-`;
-
 const IssueHeaderStyled = styled.div`
     box-sizing: border-box;
     padding: 10px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--listItemBg);
+`;
+
+const AvatarStyled = styled.img`
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
 `;

@@ -5,10 +5,10 @@ import {issuesStateAtom} from 'stores/atom';
 import {useInfiniteScroll} from 'hooks/useInfiniteScroll';
 import Ad from 'components/IssueList/Ad';
 import NotFound from 'pages/NotFound';
-import LoadingSkeleton from 'components/IssueList/IssueListSkeleton';
 import LoadingSpinner from 'components/common/LoadingSpinner';
 import IssueInfo from 'components/common/IssueInfo';
 import styled from 'styled-components';
+import IssueListSkeleton from 'components/IssueList/IssueListSkeleton';
 
 const IssueListContainer = () => {
     const issuesState = useRecoilValue(issuesStateAtom);
@@ -28,19 +28,17 @@ const IssueListContainer = () => {
     return (
         <ListContainer>
             <StyledPageTitle>Issues</StyledPageTitle>
-            {issues.length > 0 ? (
-                issues.map((data, index) => {
-                    const showAd = (index + 1) % 4 === 0;
-                    return (
-                        <React.Fragment key={data.number}>
-                            <IssueInfo issue={data} />
-                            {showAd && <Ad />}
-                        </React.Fragment>
-                    );
-                })
-            ) : (
-                <LoadingSkeleton />
-            )}
+            {issues.length > 0
+                ? issues.map((data, index) => {
+                      const showAd = (index + 1) % 4 === 0;
+                      return (
+                          <React.Fragment key={data.number}>
+                              <IssueInfo issue={data} />
+                              {showAd && <Ad />}
+                          </React.Fragment>
+                      );
+                  })
+                : Array.from({length: 10}).map((_, index) => <IssueListSkeleton key={index} />)}
             {isLoading && !isRefetchNeeded && <LoadingSpinner />}
             {moreData && <div ref={getNextPageRef} />}
         </ListContainer>
