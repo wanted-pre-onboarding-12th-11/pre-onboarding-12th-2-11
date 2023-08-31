@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const LoadingSkeleton = () => {
+const IssueListSkeleton = () => {
     return (
-        <LoadingSkeletonStyled>
+        <SkeletonStyled>
             <div className='left'>
                 <div className='title'>
                     <span></span>
@@ -10,13 +10,13 @@ const LoadingSkeleton = () => {
                 <div className='info'></div>
             </div>
             <div className='right'></div>
-        </LoadingSkeletonStyled>
+        </SkeletonStyled>
     );
 };
 
-export default LoadingSkeleton;
+export default IssueListSkeleton;
 
-const LoadingSkeletonStyled = styled.div`
+const SkeletonStyled = styled.div`
     background-color: red;
     height: 100vh;
     width: 50vw;
