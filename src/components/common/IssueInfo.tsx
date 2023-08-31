@@ -57,9 +57,11 @@ export const ItemStyled = styled.div`
     gap: 12px;
     box-sizing: border-box;
     padding: 16px;
-    border-bottom: 1px solid var(--listBorder);
-    cursor: pointer;
 
+    &.hover {
+        border-bottom: 1px solid var(--listBorder);
+        cursor: pointer;
+    }
     &.hover:hover {
         background-color: var(--listItemHoverBg);
     }

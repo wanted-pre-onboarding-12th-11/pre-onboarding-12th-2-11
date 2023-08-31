@@ -1,4 +1,4 @@
-import Item from 'components/common/IssueInfo';
+import IssueInfo from 'components/common/IssueInfo';
 import IssueBody from 'components/IssueDetail/IssueBody';
 import IssueDetailSkeleton from 'components/IssueDetail/IssueDetailSkeleton';
 import IssueDetailController from 'controllers/IssueDetailController';
@@ -25,11 +25,16 @@ const IssueDetailContainer = () => {
             {isLoading ? (
                 <IssueDetailSkeleton />
             ) : (
-                <>
-                    <Avatar src={issue.user.avatar_url} alt={`avatar-${issue.user.login}`} />
-                    <Item issue={issue} />
+                <ContainerStyled>
+                    <IssueHeaderStyled>
+                        <AvatarStyled
+                            src={issue.user.avatar_url}
+                            alt={`avatar-${issue.user.login}`}
+                        />
+                        <IssueInfo issue={issue} />
+                    </IssueHeaderStyled>
                     <IssueBody source={issue.body} />
-                </>
+                </ContainerStyled>
             )}
         </>
     );
@@ -37,8 +42,22 @@ const IssueDetailContainer = () => {
 
 export default IssueDetailContainer;
 
-const Avatar = styled.img`
-    width: 150px;
-    height: 150px;
+const ContainerStyled = styled.div`
+    border: 1px solid var(--listBorder);
+    margin: 20px 0;
+    border-radius: 12px;
+`;
+
+const AvatarStyled = styled.img`
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
+`;
+
+const IssueHeaderStyled = styled.div`
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--listItemBg);
 `;
