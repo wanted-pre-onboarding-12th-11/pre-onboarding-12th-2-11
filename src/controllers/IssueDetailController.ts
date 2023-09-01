@@ -4,7 +4,7 @@ import MESSAGE from 'constants/message';
 import {useState} from 'react';
 import {useRecoilState} from 'recoil';
 import {issuesStateAtom} from 'stores/atom';
-import {issueDetailStateType, issueItemDetailType} from 'types/issues';
+import {issueDetailStateType, issueItemDetailType, issueItemType} from 'types/issues';
 
 const IssueDetailController = () => {
     const [issueDetail, setIssueDetail] = useState<issueDetailStateType>({
@@ -25,22 +25,15 @@ const IssueDetailController = () => {
 
     const [issuesState, setIssuesState] = useRecoilState(issuesStateAtom);
 
-    const updateIssuesState = (id: number, currentIssue: issueItemDetailType) => {
-        const {number, title, comments} = currentIssue;
-
-        const prevIssue = issuesState.issues.find(issue => issue.number === number);
-        console.info(currentIssue?.title, prevIssue?.title);
-
+    const updateIssuesState = (prevIssue: issueItemType, currentIssue: issueItemDetailType) => {
+        const {number, comments} = currentIssue;
         const newIssues = [
-            ...issuesState.issues.map(issue => (issue.number === id ? currentIssue : issue)),
+            ...issuesState.issues.map(issue => (issue.number === number ? currentIssue : issue)),
         ];
-
-        if (prevIssue && (prevIssue.title !== title || prevIssue.comments !== comments)) {
-            if (prevIssue.comments !== comments) {
-                newIssues.sort((a, b) => b.comments - a.comments);
-            }
-            setIssuesState(prev => ({...prev, issues: newIssues}));
+        if (prevIssue.comments !== comments) {
+            newIssues.sort((a, b) => b.comments - a.comments);
         }
+        setIssuesState(prev => ({...prev, issues: newIssues}));
     };
 
     const getIssue = async (id: number) => {
@@ -48,6 +41,7 @@ const IssueDetailController = () => {
             const res = await api.getIssue(id);
             const issue = res.data;
             setIssueDetail(prev => ({...prev, issue}));
+
             if (res.data.state !== 'open') {
                 const error = new AxiosError();
                 setIssueDetail(prev => ({
@@ -55,7 +49,17 @@ const IssueDetailController = () => {
                     errorStatus: error.response?.status ?? 'open 상태가 아닙니다',
                 }));
             }
-            updateIssuesState(issue.number, issue);
+
+            // 만약 이슈 목록의 이슈와 가져온 정보가 다르다면 이슈 목록 업데이트
+            const prevIssue = issuesState.issues.find(
+                prevIssue => prevIssue.number === issue.number
+            );
+            if (
+                prevIssue &&
+                (prevIssue.title !== issue.title || prevIssue.comments !== issue.comments)
+            ) {
+                updateIssuesState(prevIssue, issue);
+            }
         } catch (e) {
             const error = e as AxiosError;
             setIssueDetail(prev => ({
