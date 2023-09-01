@@ -6,24 +6,6 @@
 과제 수행 과정에서 Best Practice란 팀원들이 각자의 구현방법을 설명하고 토론했을 때 팀 안에서 이 방법이 가장 효율적이라고 판단되는 것을 정하고 그것을 팀의 Best Practice로 삼는것입니다.
 이때 특정한 팀원의 과제 전체를 Best Practice로 선정하는 것이 아닌, 과제의 각 부분이나 중점을 둬야할 부분을 단위를 나눈뒤, 각 단위마다의 Best Practice를 토론하고, 단위별로 Best Practice를 모아서 팀의 최종 결과물을 만들어내는 방식으로 진행해주세요.
 
-1. 이슈 목록 화면
-    - 이슈 목록 가져오기 [Github REST API](https://docs.github.com/en/rest) 활용
-    - open 상태의 이슈 중 코멘트가 많은 순으로 정렬
-    - 각 행에는 ‘이슈번호, 이슈제목, 작성자, 작성일, 코멘트수’를 표시
-    - 다섯번째 셀마다 광고 이미지 출력
-    - 광고 이미지 클릭 시 https://www.wanted.co.kr/ 로 이동
-    - 화면을 아래로 스크롤 할 시 이슈 목록 추가 로딩(인피니티 스크롤)
-
-2. 이슈 상세 화면
-    - 이슈의 상세 내용 표시
-    - ‘이슈번호, 이슈제목, 작성자, 작성일, 코멘트 수, 작성자 프로필 이미지, 본문' 표시
-    
-3. 공통 헤더
-    - 두 페이지는 공통 헤더를 공유합니다.
-    - 헤더에는 Organization Name / Repository Name이 표시됩니다.
-
-4. 에러 화면 구현
-
 ## 팀원 소개
 
 > 이름을 클릭하면 개인 github 프로필로 이동합니다.
@@ -54,7 +36,8 @@
 
 ## 시작 가이드
 * 배포 주소
-🔗 http://wanted-pre-onboarding-12th-2-11.s3-website.ap-northeast-2.amazonaws.com/issues
+
+  🔗 http://wanted-pre-onboarding-12th-2-11.s3-website.ap-northeast-2.amazonaws.com/issues
 
 * 프로젝트 실행 방법
   ```
@@ -76,7 +59,7 @@
 ## ✨ Best Practice 도출
 
 ### 1. Best Practice를 위해 고민한 내용들 (토론한 내용 결과, 근거)
-- [노션 링크](https://motley-bird-51b.notion.site/Best-Practice-91e158df7e814602b142c18693eac97a?pvs=4) 참고
+- [Notion 링크](https://motley-bird-51b.notion.site/Best-Practice-91e158df7e814602b142c18693eac97a?pvs=4) 참고
 
 ### 2. 프론트엔드 아키텍쳐
 
@@ -103,7 +86,7 @@
 >   - status 코드가 명시된 에러는 사용자에게 코드 정보를 제공합니다.
 
 ### 4. 트러블 슈팅
-- [노션 링크(수정해야함)](https://motley-bird-51b.notion.site/f598f800796241b593eff5e2fa60d9e3?pvs=4) 참고
+- [Notion 링크](https://motley-bird-51b.notion.site/d61764a5cc4b476e82c3026bbb881a39?pvs=4) 참고
 
 ### 5. 디렉토리 구조
 ```
@@ -140,14 +123,8 @@
   | docs | README.md 수정 등 |
   | design | UI 디자인 |
   | merge | 머지, 충돌해결 등  |
-
-  #### `브랜치 컨벤션`
-  - master 브랜치를 직접 작업하지 않습니다.
-  - 브랜치는 feature/이름약자-[작업내용] 형태로 생성합니다.
-
-    `feature/TJ-ProfilePage`
     
-  #### `코드 컨벤션`,`formatting, lint 컨벤션`
+  #### `코드 컨벤션`, `formatting, lint 컨벤션`
   - [Notion 링크](https://motley-bird-51b.notion.site/d921faeed6f8452b89bc5e04f0b21c2c?pvs=4) 참고
    
 
@@ -161,7 +138,6 @@
 
 ### Library
 <img src="https://img.shields.io/badge/styled%20components-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"> <img src="https://img.shields.io/badge/Axios-DA291C?style=for-the-badge&logo=axios&logoColor=white"> <img src="https://img.shields.io/badge/Recoil-3578E5?style=for-the-badge&logo=Recoil&logoColor=white">
-
 <img src="https://img.shields.io/badge/React%20markdown%20preview-000000?style=for-the-badge&logo=Markdown&logoColor=white"> <img src="https://img.shields.io/badge/React Router Dom-3178C6?style=for-the-badge&logo=&logoColor=white">
 
 
