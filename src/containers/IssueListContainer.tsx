@@ -18,7 +18,7 @@ const IssueListContainer = () => {
 
     useEffect(() => {
         isRefetchNeeded && getIssues(1);
-    }, []);
+    }, [getIssues, isRefetchNeeded]);
 
     const getNextPageRef = useInfiniteScroll(getNextPage);
 

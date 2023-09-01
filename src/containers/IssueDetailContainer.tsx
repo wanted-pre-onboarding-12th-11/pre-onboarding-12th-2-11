@@ -16,7 +16,7 @@ const IssueDetailContainer = () => {
 
     useEffect(() => {
         getIssue(issueNumber);
-    }, []);
+    }, [getIssue, issueNumber]);
 
     if (errorStatus) return <NotFound errorStatus={errorStatus} />;
 
