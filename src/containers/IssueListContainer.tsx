@@ -1,4 +1,4 @@
-import {IssuesController} from 'controllers/IssuesController';
+import useIssues from 'hooks/controllers/useIssues';
 import React, {useEffect} from 'react';
 import {useRecoilValue} from 'recoil';
 import {issuesStateAtom} from 'stores/atom';
@@ -12,14 +12,13 @@ import IssueListSkeleton from 'components/IssueList/IssueListSkeleton';
 
 const IssueListContainer = () => {
     const issuesState = useRecoilValue(issuesStateAtom);
-    const {isLoading, errorStatus, moreData, issues} = issuesState;
-    const isRefetchNeeded = !issues.length;
+    const {isRefetchNeeded, isLoading, errorStatus, moreData, issues} = issuesState;
 
-    const {getIssues, getNextPage} = IssuesController();
+    const {getIssues, getNextPage} = useIssues();
 
     useEffect(() => {
         isRefetchNeeded && getIssues(1);
-    }, []);
+    }, [getIssues, isRefetchNeeded]);
 
     const getNextPageRef = useInfiniteScroll(getNextPage);
 
