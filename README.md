@@ -50,7 +50,7 @@
 2023.08.29-2023.08.31
 
 ## 팀 노션
-[팀 노션 링크](https://motley-bird-51b.notion.site/2-68c1a5c093194ae1a5ea81df4b0140b6?pvs=4)
+[팀 노션 링크(수정해야함)](https://motley-bird-51b.notion.site/2-68c1a5c093194ae1a5ea81df4b0140b6?pvs=4)
 
 ## 시작 가이드
 * 배포 주소
@@ -80,7 +80,7 @@
 
 ### 2. 프론트엔드 아키텍쳐
 
-
+<img width="1698" alt="arc" src="https://github.com/wanted-pre-onboarding-12th-11/pre-onboarding-12th-2-11/assets/124250465/85459452-4a13-4cd5-92da-e724d36b5d94">
 
 ### 3. 주요 기능
 
@@ -99,7 +99,7 @@
  > - 유효하지 않은 토큰을 가진 사용자가 접속시에는 토큰 삭제 및 로그인 페이지로 이동합니다.
 
 ### 4. 트러블 슈팅
-- [노션 링크](https://motley-bird-51b.notion.site/f598f800796241b593eff5e2fa60d9e3?pvs=4) 참고
+- [노션 링크(수정해야함)](https://motley-bird-51b.notion.site/f598f800796241b593eff5e2fa60d9e3?pvs=4) 참고
 
 ### 5. 디렉토리 구조
 ```
@@ -144,7 +144,7 @@
     `feature/TJ-ProfilePage`
     
   #### `코드 컨벤션`,`formatting, lint 컨벤션`
-  - [Notion 링크](https://motley-bird-51b.notion.site/d921faeed6f8452b89bc5e04f0b21c2c?pvs=4) 참고
+  - [Notion 링크(수정해야함)](https://motley-bird-51b.notion.site/d921faeed6f8452b89bc5e04f0b21c2c?pvs=4) 참고
    
 
 ## 기술스택 
