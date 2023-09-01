@@ -1,14 +1,32 @@
 # 원티드 프리온보딩 프론트엔드 12차 2주차 과제 - 11팀
 
 ## 과제 소개
-- 수정해야합니다
+- [특정 깃헙 레파지토리(React)의 이슈 목록](https://github.com/facebook/react/issues)과 상세 내용을 확인하는 웹 사이트 구축 + Best Practice 도출
 > Best Practice란 모범사례라는 말로서, 특정 문제를 효과적으로 해결하기 위한 가장 성공적인 해결책 또는 방법론을 의미합니다. 
 과제 수행 과정에서 Best Practice란 팀원들이 각자의 구현방법을 설명하고 토론했을 때 팀 안에서 이 방법이 가장 효율적이라고 판단되는 것을 정하고 그것을 팀의 Best Practice로 삼는것입니다.
 이때 특정한 팀원의 과제 전체를 Best Practice로 선정하는 것이 아닌, 과제의 각 부분이나 중점을 둬야할 부분을 단위를 나눈뒤, 각 단위마다의 Best Practice를 토론하고, 단위별로 Best Practice를 모아서 팀의 최종 결과물을 만들어내는 방식으로 진행해주세요.
 
+1. 이슈 목록 화면
+    - 이슈 목록 가져오기 [Github REST API](https://docs.github.com/en/rest) 활용
+    - open 상태의 이슈 중 코멘트가 많은 순으로 정렬
+    - 각 행에는 ‘이슈번호, 이슈제목, 작성자, 작성일, 코멘트수’를 표시
+    - 다섯번째 셀마다 광고 이미지 출력
+    - 광고 이미지 클릭 시 https://www.wanted.co.kr/ 로 이동
+    - 화면을 아래로 스크롤 할 시 이슈 목록 추가 로딩(인피니티 스크롤)
+
+2. 이슈 상세 화면
+    - 이슈의 상세 내용 표시
+    - ‘이슈번호, 이슈제목, 작성자, 작성일, 코멘트 수, 작성자 프로필 이미지, 본문' 표시
+    
+3. 공통 헤더
+    - 두 페이지는 공통 헤더를 공유합니다.
+    - 헤더에는 Organization Name / Repository Name이 표시됩니다.
+
+4. 에러 화면 구현
+
 ## 팀원 소개
 
-> 이름을 클릭하면 개인 레포지토리로 이동합니다.
+> 이름을 클릭하면 개인 github 프로필로 이동합니다.
 
 |  [팀장] [장택진](https://github.com/TaekJinJang)     |  [김영채](https://github.com/0chae01)    |   [박상준](https://github.com/owen970517)            |  [오아름](https://github.com/Aroma-oh)             |[이새미](https://github.com/saemileee)| [홍혜수](https://github.com/hyesuhong)|
 | :---------------------------------------------: | :---------------------------------------------: | :---------------------------------------------: | :---------------------------------------------: | :---------------------------------------------: | :---------------------------------------------: |
@@ -46,7 +64,14 @@
 
 ## 화면 구성
 
+|            /signin     |       /signup      |
+| :-------------------------: | :-----------------------------------------------: |
+| <img width="400" alt="issueList_gif" src="https://github.com/wanted-pre-onboarding-12th-11/pre-onboarding-12th-2-11/assets/124250465/4b3e2e9f-51a7-4e84-9ed6-eee60723b67a" /> | <img width="400" alt="issueDetail_gif" src="https://github.com/wanted-pre-onboarding-12th-11/pre-onboarding-12th-2-11/assets/124250465/4696107f-d5ed-4bce-8fcd-6c452deeb740" />|
 
+
+|                   Error             |     Error(open 상태가 아닌 이슈)   |
+| :----------------------------: | :-----------------------------------: |
+| <img width="400" alt="404" src="https://github.com/wanted-pre-onboarding-12th-11/pre-onboarding-12th-2-11/assets/124250465/ffa83a92-6ca6-4535-a36b-de036de37951"> | <img width="400" alt="notopen" src="https://github.com/wanted-pre-onboarding-12th-11/pre-onboarding-12th-2-11/assets/124250465/14d37aff-5be1-426e-9c61-16d9a92c2f3a"> |
 
 ## ✨ Best Practice 도출
 
