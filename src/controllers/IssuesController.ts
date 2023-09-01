@@ -4,6 +4,7 @@ import {issueItemType, issuesStateType} from 'types/issues';
 import * as api from 'apis/issues';
 import {AxiosError} from 'axios';
 import MESSAGE from 'constants/message';
+import {PER_PAGE} from 'constants/api';
 
 export const IssuesController = () => {
     const [issuesState, setIssuesState] = useRecoilState(issuesStateAtom);
@@ -34,7 +35,7 @@ export const IssuesController = () => {
             });
 
             // 마지막 불러온 페이지가 빈 (마지막 페이지 +1 )페이지인 경우 더이상 무한스크롤 안되게 세팅
-            if (!newIssues.length || newIssues.length < 30) {
+            if (!newIssues.length || newIssues.length < PER_PAGE) {
                 return setIssuesState((prev: issuesStateType) => ({
                     ...prev,
                     moreData: false,
