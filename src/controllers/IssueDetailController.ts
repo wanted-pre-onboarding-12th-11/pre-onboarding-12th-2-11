@@ -2,9 +2,10 @@ import * as api from 'apis/issues';
 import {AxiosError} from 'axios';
 import MESSAGE from 'constants/message';
 import {useState} from 'react';
-import {useRecoilState} from 'recoil';
+import {useRecoilValue} from 'recoil';
 import {issuesStateAtom} from 'stores/atom';
-import {issueDetailStateType, issueItemDetailType, issueItemType} from 'types/issues';
+import {issueDetailStateType} from 'types/issues';
+import {IssuesController} from './IssuesController';
 
 const IssueDetailController = () => {
     const [issueDetail, setIssueDetail] = useState<issueDetailStateType>({
@@ -23,18 +24,9 @@ const IssueDetailController = () => {
         },
     });
 
-    const [issuesState, setIssuesState] = useRecoilState(issuesStateAtom);
+    const {updateIssues} = IssuesController();
 
-    const updateIssuesState = (prevIssue: issueItemType, currentIssue: issueItemDetailType) => {
-        const {number, comments} = currentIssue;
-        const newIssues = [
-            ...issuesState.issues.map(issue => (issue.number === number ? currentIssue : issue)),
-        ];
-        if (prevIssue.comments !== comments) {
-            newIssues.sort((a, b) => b.comments - a.comments);
-        }
-        setIssuesState(prev => ({...prev, issues: newIssues}));
-    };
+    const issuesState = useRecoilValue(issuesStateAtom);
 
     const getIssue = async (id: number) => {
         try {
@@ -58,7 +50,7 @@ const IssueDetailController = () => {
                 prevIssue &&
                 (prevIssue.title !== issue.title || prevIssue.comments !== issue.comments)
             ) {
-                updateIssuesState(prevIssue, issue);
+                updateIssues(prevIssue, issue);
             }
         } catch (e) {
             const error = e as AxiosError;

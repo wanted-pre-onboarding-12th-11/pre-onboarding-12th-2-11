@@ -1,6 +1,6 @@
 import {useRecoilState} from 'recoil';
 import {issuesStateAtom} from 'stores/atom';
-import {issueItemType, issuesStateType} from 'types/issues';
+import {issueItemDetailType, issueItemType, issuesStateType} from 'types/issues';
 import * as api from 'apis/issues';
 import {AxiosError} from 'axios';
 import MESSAGE from 'constants/message';
@@ -62,5 +62,16 @@ export const IssuesController = () => {
         getIssues(newPageCount);
     };
 
-    return {getIssues, getNextPage};
+    const updateIssues = (prevIssue: issueItemType, currentIssue: issueItemDetailType) => {
+        const {number, comments} = currentIssue;
+        const newIssues = [
+            ...issuesState.issues.map(issue => (issue.number === number ? currentIssue : issue)),
+        ];
+        if (prevIssue.comments !== comments) {
+            newIssues.sort((a, b) => b.comments - a.comments);
+        }
+        setIssuesState(prev => ({...prev, issues: newIssues}));
+    };
+
+    return {getIssues, getNextPage, updateIssues};
 };
