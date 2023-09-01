@@ -4,7 +4,7 @@ import MESSAGE from 'constants/message';
 import {useState} from 'react';
 import {useRecoilState} from 'recoil';
 import {issuesStateAtom} from 'stores/atom';
-import {issueDetailStateType} from 'types/issues';
+import {issueDetailStateType, issueItemDetailType} from 'types/issues';
 
 const IssueDetailController = () => {
     const [issueDetail, setIssueDetail] = useState<issueDetailStateType>({
@@ -25,10 +25,29 @@ const IssueDetailController = () => {
 
     const [issuesState, setIssuesState] = useRecoilState(issuesStateAtom);
 
+    const updateIssuesState = (id: number, currentIssue: issueItemDetailType) => {
+        const {number, title, comments} = currentIssue;
+
+        const prevIssue = issuesState.issues.find(issue => issue.number === number);
+        console.info(currentIssue?.title, prevIssue?.title);
+
+        const newIssues = [
+            ...issuesState.issues.map(issue => (issue.number === id ? currentIssue : issue)),
+        ];
+
+        if (prevIssue && (prevIssue.title !== title || prevIssue.comments !== comments)) {
+            if (prevIssue.comments !== comments) {
+                newIssues.sort((a, b) => b.comments - a.comments);
+            }
+            setIssuesState(prev => ({...prev, issues: newIssues}));
+        }
+    };
+
     const getIssue = async (id: number) => {
         try {
             const res = await api.getIssue(id);
-            setIssueDetail(prev => ({...prev, issue: res.data}));
+            const issue = res.data;
+            setIssueDetail(prev => ({...prev, issue}));
             if (res.data.state !== 'open') {
                 const error = new AxiosError();
                 setIssueDetail(prev => ({
@@ -36,6 +55,7 @@ const IssueDetailController = () => {
                     errorStatus: error.response?.status ?? 'open 상태가 아닙니다',
                 }));
             }
+            updateIssuesState(issue.number, issue);
         } catch (e) {
             const error = e as AxiosError;
             setIssueDetail(prev => ({
@@ -47,16 +67,7 @@ const IssueDetailController = () => {
         }
     };
 
-    const updateIssuesState = (id: number, title: string, comments: number) => {
-        const issue = issuesState.issues.find(issue => issue.number === id);
-
-        if (issue && (issue.title !== title || issue.comments !== comments)) {
-            const newIssue = {...issue, title, comments};
-            setIssuesState(prev => ({...prev, issues: [...prev.issues, newIssue]}));
-        }
-    };
-
-    return {issueDetail, getIssue, updateIssuesState};
+    return {issueDetail, getIssue};
 };
 
 export default IssueDetailController;
