@@ -41,8 +41,9 @@
 
 * 프로젝트 실행 방법
   ```
-  $ npm install
-  $ npm start
+  1. 루트 경로에 .env 파일 추가 후 `REACT_APP_GIT_TOKEN = 개인 깃헙 토큰` 추가
+  2. $ npm install
+  3. $ npm start
   ```
 
 ## 화면 구성
