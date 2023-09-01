@@ -20,6 +20,21 @@ const SkeletonStyled = styled(ItemStyled)`
     overflow: hidden;
     position: relative;
 
+    @keyframes shine {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+    animation: shine 1s ease-in-out infinite;
+
     div {
         border-radius: 6px;
     }
