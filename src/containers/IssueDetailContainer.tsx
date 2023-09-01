@@ -11,11 +11,12 @@ const IssueDetailContainer = () => {
     const params = useParams();
     const issueNumber = Number(params.id);
 
-    const {issueDetail, getIssue} = IssueDetailController();
+    const {issueDetail, getIssue, updateIssuesState} = IssueDetailController();
     const {isLoading, errorStatus, issue} = issueDetail;
 
     useEffect(() => {
         getIssue(issueNumber);
+        updateIssuesState(issueNumber, issue.title, issue.comments);
     }, []);
 
     if (errorStatus) return <NotFound errorStatus={errorStatus} />;

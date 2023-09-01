@@ -2,6 +2,8 @@ import * as api from 'apis/issues';
 import {AxiosError} from 'axios';
 import MESSAGE from 'constants/message';
 import {useState} from 'react';
+import {useRecoilState} from 'recoil';
+import {issuesStateAtom} from 'stores/atom';
 import {issueDetailStateType} from 'types/issues';
 
 const IssueDetailController = () => {
@@ -20,6 +22,8 @@ const IssueDetailController = () => {
             body: '',
         },
     });
+
+    const [issuesState, setIssuesState] = useRecoilState(issuesStateAtom);
 
     const getIssue = async (id: number) => {
         try {
@@ -43,7 +47,16 @@ const IssueDetailController = () => {
         }
     };
 
-    return {issueDetail, getIssue};
+    const updateIssuesState = (id: number, title: string, comments: number) => {
+        const issue = issuesState.issues.find(issue => issue.number === id);
+
+        if (issue && (issue.title !== title || issue.comments !== comments)) {
+            const newIssue = {...issue, title, comments};
+            setIssuesState(prev => ({...prev, issues: [...prev.issues, newIssue]}));
+        }
+    };
+
+    return {issueDetail, getIssue, updateIssuesState};
 };
 
 export default IssueDetailController;
