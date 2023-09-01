@@ -1,4 +1,4 @@
-import {IssuesController} from 'controllers/IssuesController';
+import useIssues from 'controllers/useIssues';
 import React, {useEffect} from 'react';
 import {useRecoilValue} from 'recoil';
 import {issuesStateAtom} from 'stores/atom';
@@ -14,7 +14,7 @@ const IssueListContainer = () => {
     const issuesState = useRecoilValue(issuesStateAtom);
     const {isRefetchNeeded, isLoading, errorStatus, moreData, issues} = issuesState;
 
-    const {getIssues, getNextPage} = IssuesController();
+    const {getIssues, getNextPage} = useIssues();
 
     useEffect(() => {
         isRefetchNeeded && getIssues(1);

@@ -1,7 +1,7 @@
 import IssueInfo from 'components/common/IssueInfo';
 import IssueBody from 'components/IssueDetail/IssueBody';
 import IssueDetailSkeleton from 'components/IssueDetail/IssueDetailSkeleton';
-import IssueDetailController from 'controllers/IssueDetailController';
+import useIssueDetail from 'controllers/useIssueDetail';
 import NotFound from 'pages/NotFound';
 import {useEffect} from 'react';
 import {useParams} from 'react-router-dom';
@@ -11,7 +11,7 @@ const IssueDetailContainer = () => {
     const params = useParams();
     const issueNumber = Number(params.id);
 
-    const {issueDetail, getIssue} = IssueDetailController();
+    const {issueDetail, getIssue} = useIssueDetail();
     const {isLoading, errorStatus, issue} = issueDetail;
 
     useEffect(() => {
