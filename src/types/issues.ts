@@ -17,6 +17,7 @@ export interface issueItemDetailType extends issueItemType {
 }
 
 export interface issuesStateType {
+    isRefetchNeeded: boolean;
     isLoading: boolean;
     errorStatus: number | string;
     pageCount: number;

@@ -12,8 +12,7 @@ import IssueListSkeleton from 'components/IssueList/IssueListSkeleton';
 
 const IssueListContainer = () => {
     const issuesState = useRecoilValue(issuesStateAtom);
-    const {isLoading, errorStatus, moreData, issues} = issuesState;
-    const isRefetchNeeded = !issues.length;
+    const {isRefetchNeeded, isLoading, errorStatus, moreData, issues} = issuesState;
 
     const {getIssues, getNextPage} = IssuesController();
 
