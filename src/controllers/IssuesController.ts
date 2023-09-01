@@ -10,7 +10,11 @@ export const IssuesController = () => {
 
     const getIssues = async (page: number) => {
         try {
-            setIssuesState((prev: issuesStateType) => ({...prev, moreData: false}));
+            setIssuesState((prev: issuesStateType) => ({
+                ...prev,
+                moreData: false,
+                isRefetchNeeded: false,
+            }));
             const res = await api.getIssues(page);
             const newIssues = res.data;
 
