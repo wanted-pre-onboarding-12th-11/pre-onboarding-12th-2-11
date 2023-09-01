@@ -26,8 +26,6 @@ const IssueDetailController = () => {
 
     const {updateIssues} = IssuesController();
 
-    const issuesState = useRecoilValue(issuesStateAtom);
-
     const getIssue = async (id: number) => {
         try {
             const res = await api.getIssue(id);
@@ -42,16 +40,8 @@ const IssueDetailController = () => {
                 }));
             }
 
-            // 만약 이슈 목록의 이슈와 가져온 정보가 다르다면 이슈 목록 업데이트
-            const prevIssue = issuesState.issues.find(
-                prevIssue => prevIssue.number === issue.number
-            );
-            if (
-                prevIssue &&
-                (prevIssue.title !== issue.title || prevIssue.comments !== issue.comments)
-            ) {
-                updateIssues(prevIssue, issue);
-            }
+            // 가져온 정보가 업데이트 된 정보일 수 있기 때문에 이슈 목록 업데이트
+            updateIssues(issue);
         } catch (e) {
             const error = e as AxiosError;
             setIssueDetail(prev => ({

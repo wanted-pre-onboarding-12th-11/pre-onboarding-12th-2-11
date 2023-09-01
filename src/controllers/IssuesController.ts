@@ -62,15 +62,21 @@ export const IssuesController = () => {
         getIssues(newPageCount);
     };
 
-    const updateIssues = (prevIssue: issueItemType, currentIssue: issueItemDetailType) => {
-        const {number, comments} = currentIssue;
-        const newIssues = [
-            ...issuesState.issues.map(issue => (issue.number === number ? currentIssue : issue)),
-        ];
-        if (prevIssue.comments !== comments) {
-            newIssues.sort((a, b) => b.comments - a.comments);
+    const updateIssues = (newIssue: issueItemDetailType) => {
+        const prevIssue = issuesState.issues.find(issue => issue.number === newIssue.number);
+        if (
+            prevIssue &&
+            (prevIssue.title !== newIssue.title || prevIssue.comments !== newIssue.comments)
+        ) {
+            const {number, comments} = newIssue;
+            const newIssues = [
+                ...issuesState.issues.map(issue => (issue.number === number ? newIssue : issue)),
+            ];
+            if (prevIssue?.comments !== comments) {
+                newIssues.sort((a, b) => b.comments - a.comments);
+            }
+            setIssuesState(prev => ({...prev, issues: newIssues}));
         }
-        setIssuesState(prev => ({...prev, issues: newIssues}));
     };
 
     return {getIssues, getNextPage, updateIssues};
