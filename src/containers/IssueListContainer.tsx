@@ -1,4 +1,4 @@
-import useIssues from 'controllers/useIssues';
+import useIssues from 'hooks/controllers/useIssues';
 import React, {useEffect} from 'react';
 import {useRecoilValue} from 'recoil';
 import {issuesStateAtom} from 'stores/atom';
