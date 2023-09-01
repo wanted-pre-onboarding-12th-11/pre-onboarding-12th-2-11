@@ -47,7 +47,7 @@
 
 ## 화면 구성
 
-|            /signin     |       /signup      |
+|            /issues     |       /issues/:id      |
 | :-------------------------: | :-----------------------------------------------: |
 | <img width="400" alt="issueList_gif" src="https://github.com/wanted-pre-onboarding-12th-11/pre-onboarding-12th-2-11/assets/124250465/4b3e2e9f-51a7-4e84-9ed6-eee60723b67a" /> | <img width="400" alt="issueDetail_gif" src="https://github.com/wanted-pre-onboarding-12th-11/pre-onboarding-12th-2-11/assets/124250465/4696107f-d5ed-4bce-8fcd-6c452deeb740" />|
 
